@@ -1,45 +1,26 @@
-# nutanix-ucs-metro-docs
-Engineering Guide: Nutanix Metro Availability on Cisco UCS M5/M6/M7.
-# Nutanix Metro Availability on Cisco UCS: Implementation Guide
+# Nutanix Metro Availability on Cisco UCS
+### Comprehensive Implementation & Operations Guide
 
-[![Documentation Status](https://img.shields.io/badge/Status-Validated-green.svg)](https://rack2cloud.com)
-[![Expertise](https://img.shields.io/badge/Expertise-NCP--Principal-blue.svg)](https://nutanix.com)
+This repository serves as a professional-grade technical resource for deploying **Nutanix Metro Availability** across **Cisco UCS** infrastructure. [cite_start]It is designed to guide Principal Engineers through zero-downtime architecture, synchronous replication flows, and multi-site resiliency. [cite: 1, 3, 4]
 
-This repository contains the definitive engineering guide for deploying **Nutanix Metro Availability** on **Cisco UCS M5/M6/M7** hardware. It addresses the intersection of software-defined storage logic and physical compute fabric optimization.
+## 🛠 Project Scope
+* [cite_start]**Zero-RPO synchronous replication** for continuous operations. [cite: 15]
+* [cite_start]**Cisco UCS Modes:** Comprehensive coverage for IMM, ISM, and UCSM. [cite: 13, 31, 51]
+* [cite_start]**Cross-Hypervisor Support:** Detailed workflows for both Nutanix AHV and VMware ESXi. [cite: 87, 94]
 
-## 📖 Guide Modules
+## 📚 Documentation Modules
+Click a module below to begin the deep dive:
 
-| Module | Level | Focus |
+| Module | Title | Focus |
 | :--- | :--- | :--- |
-| [Foundations](./modules/01-foundations.md) | L100 | Latency (≤5ms), MTU, and Witness Quorum logic. |
-| [Cisco UCS Alignment](./modules/02-ucs-hardware.md) | L200 | Fabric Interconnects, vNIC Policies, and BIOS Tuning. |
-| [Implementation](./modules/03-implementation.md) | L300 | Container mapping, Witness deployment, and Affinity rules. |
-| [Failure Logic](./modules/04-failure-logic.md) | L300 | Split-brain protection and automated promotion logic. |
-| [Day 2 Operations](./modules/05-day2-ops.md) | L200 | Non-disruptive testing and scaling hardware. |
+| **01** | [Introduction](./docs/modules/01-intro.md) | Active-Active benefits & AOS fundamentals. |
+| **02** | [Metro Overview](./docs/modules/02-overview.md) | Sync vs. Async & Witness requirements. |
+| **03** | [Architecture](./docs/modules/03-architecture.md) | I/O flow & Latency (≤5ms) requirements. |
+| **04** | [Intersight ISM](./docs/modules/04-ism.md) | Standalone mode & CIMC preparation. |
+| **05** | [AOS Installation](./docs/modules/05-installation.md) | IMM, ISM, and UCSM imaging workflows. |
+| **06** | [Network Design](./docs/modules/06-networking.md) | MTU, VLAN trunking, and vPC design. |
+| **07** | [Deployment](./docs/modules/07-deployment.md) | Cluster pairing & Protection Domains. |
+| **08** | [Operations](./docs/modules/08-operations.md) | Failover testing & LCM upgrades. |
 
 ---
-
-## 🛠 Automation
-The `/scripts` directory contains validated PowerShell scripts for the **Cisco UCS PowerTool Suite**.
-* `deploy-node.ps1`: Automates Service Profile creation from Nutanix-optimized templates.
-
-
-
-## ⚡ Quick Specs for Metro
-* **Max Latency:** 5ms Round Trip Time (RTT).
-* **Storage Interface:** 10/25/100GbE (Cisco VIC 1400/1500).
-* **Network:** Stretched Layer 2 (Management, Storage, and VM traffic).
-* **Witness:** Required at a 3rd site (Cloud or independent On-Prem).
-
----
-
-## 🚀 Getting Started
-1. **Clone the repo:** `git clone https://github.com/your-org/nutanix-ucs-metro-docs.git`
-2. **Review Module 2:** Ensure your Cisco UCS Fabric Interconnects are configured for Jumbo Frames (9216 MTU).
-3. **Deploy Witness:** Use the lightweight OVF available on the Nutanix Support Portal.
-
----
-
-## 🖋 Author
-**Principal Systems Engineer | Nutanix Certified Professional (NCP)**
-*Specializing in Rack2Cloud Architecture & Hybrid Cloud Integration.*
+*Created by [Your Name/Company] - Delivering Zero-Downtime Resiliency.*
