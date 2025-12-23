@@ -27,3 +27,14 @@ graph TD
     style D fill:#27ae60,stroke:#1e8449,color:#fff
     style E fill:#2980b9,stroke:#2471a3,color:#fff
     style F fill:#c0392b,stroke:#922b21,color:#fff
+```
+### Understanding the Diagram
+* **Quorum Lock**: When Site A fails, Site B attempts to acquire a lock on the Witness to prove it is the surviving site.
+* **Promotion**: Once the lock is acquired, the standby container on Site B is promoted to Active, allowing VMs to restart.
+* **Manual Intervention**: If the Witness is unreachable, Site B stays in standby to prevent a Split-Brain scenario.
+
+## 2.3 Hypervisor and Software Support
+Nutanix Metro Availability is designed to work across the industry's leading hypervisors with specific integration points for each.
+
+* **Nutanix AHV**: Features native support for automated failover and simplified management directly through the Prism interface.
+* **VMware ESXi**: Integrates with vCenter for datastore presentation and requires specific HA/DRS rules (Should/Must rules) to ensure operational stability and prevent I/O tromboning.
