@@ -21,7 +21,7 @@ Click a module below to begin the detailed technical training:
 | **06** | [Network Design](./docs/modules/06-networking.md) | Trunking, MTU 9000 efficiency, vPC dual-switch redundancy, and inter-site architecture. |
 | **07** | [Deployment](./docs/modules/07-deployment.md) | Witness VM registration, Protection Domain creation, and site-to-site cluster pairing. |
 | **08** | [Operations](./docs/modules/08-operations.md) | Planned/Unplanned failover testing, LCM firmware upgrades, and ESXi HA/DRS behaviors. |
-| **09** | [Summary](./docs/SUMMARY.md) | Nutanix Metro Availability on Cisco UCS course summary. |
+| **09** | [Summary](docs/SUMMARY.md) | Nutanix Metro Availability on Cisco UCS course summary. |
 
 ## ⚡ Technical Guardrails
 * **Latency:** Synchronous replication requires a strict Round Trip Time (RTT) of **≤ 5ms** to maintain application performance.
