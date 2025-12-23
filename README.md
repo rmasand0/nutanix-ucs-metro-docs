@@ -35,7 +35,7 @@ Click a module below to begin the detailed technical training:
 ## 🏆 Knowledge Validation
 Think you've mastered Nutanix Metro on Cisco UCS? Take our interactive certification quiz to find out!
 
-* **[Take the Certification Quiz](YOUR_MICROSOFT_FORMS_LINK_HERE)**
+* **[Take the Certification Quiz] - https://forms.cloud.microsoft/r/Apk0qsihGe**
 * **Estimated Time:** 10 minutes
 * **Passing Score:** 80%
 
