@@ -22,6 +22,9 @@ Click a module below to begin the detailed technical training:
 | **07** | [Deployment](./docs/modules/07-deployment.md) | Witness VM registration, Protection Domain creation, and site-to-site cluster pairing. |
 | **08** | [Operations](./docs/modules/08-operations.md) | Planned/Unplanned failover testing, LCM firmware upgrades, and ESXi HA/DRS behaviors. |
 
+## 📖 Reference Materials
+* **[Glossary of Terms](./docs/GLOSSARY.md)**: Definitions for key acronyms and technical terminology used in this guide.
+
 ## ⚡ Technical Guardrails
 * **Latency:** Synchronous replication requires a strict Round Trip Time (RTT) of **≤ 5ms** to maintain application performance.
 * **Witness:** A Witness VM must be deployed at a 3rd site to provide quorum, split-brain protection, and site arbitration.
