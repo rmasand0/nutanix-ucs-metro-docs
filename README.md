@@ -32,5 +32,12 @@ Click a module below to begin the detailed technical training:
 * **MTU:** Jumbo Frames (MTU 9000) are required across the entire path for replication efficiency and throughput.
 * **LACP:** Networking warning: LACP must not be enabled on the Fabric Interconnects until imaging is complete.
 
+## 🏆 Knowledge Validation
+Think you've mastered Nutanix Metro on Cisco UCS? Take our interactive certification quiz to find out!
+
+* **[Take the Certification Quiz](YOUR_MICROSOFT_FORMS_LINK_HERE)**
+* **Estimated Time:** 10 minutes
+* **Passing Score:** 80%
+
 ---
 *Created for Rack2Cloud Architecture — Delivering Zero-Downtime Resiliency.*
