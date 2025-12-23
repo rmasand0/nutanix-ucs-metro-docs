@@ -36,7 +36,7 @@ Click a module below to begin the detailed technical training:
 Think you've mastered Nutanix Metro on Cisco UCS? Take our interactive certification quiz to find out!
 
 * **[Take the Interactive Certification Quiz](https://forms.cloud.microsoft/r/Apk0qsihGe)**  | 10 Questions | Estimated Time: 10 min | Passing Score: 80%*
-* **[Claim your Certificate of Completion](https://github.comrmasand0/nutanix-ucs-metro-docs/blob/main/docs/CERTIFICATE.md)** *Available to all participants who pass the quiz.*
+* **[Claim your Certificate of Completion](https://https://github.com/rmasand0/nutanix-ucs-metro-docs/blob/main/docs/CERTIFICATE.md)** *Available to all participants who pass the quiz.*
 
 ---
 *Created for Rack2Cloud Architecture — Delivering Zero-Downtime Resiliency.*
