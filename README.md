@@ -23,8 +23,8 @@ Click a module below to begin the detailed technical training:
 | **08** | [Operations](./docs/modules/08-operations.md) | Planned/Unplanned failover testing, LCM firmware upgrades, and ESXi HA/DRS behaviors. |
 
 ## 📖 Reference Materials
-* **[Workshop Agenda](./docs/AGENDA.md)**: The full schedule for the 2-day technical deep dive.
-* **[Glossary of Terms](./docs/GLOSSARY.md)**: Definitions for key acronyms and technical terminology used in this guide.
+* **[Take the Interactive Certification Quiz](https://forms.cloud.microsoft/r/Apk0qsihGe)** | 10 Questions | Estimated Time: 10 min
+* **[Claim your Certificate of Completion](docs/CERTIFICATE.md)** | Available to all participants who pass the quiz.
 
 ## ⚡ Technical Guardrails
 * **Latency:** Synchronous replication requires a strict Round Trip Time (RTT) of **≤ 5ms** to maintain application performance.
@@ -36,7 +36,7 @@ Click a module below to begin the detailed technical training:
 Think you've mastered Nutanix Metro on Cisco UCS? Take our interactive certification quiz to find out!
 
 * **[Take the Interactive Certification Quiz](https://forms.cloud.microsoft/r/Apk0qsihGe)**  | 10 Questions | Estimated Time: 10 min | Passing Score: 80%*
-* **[Claim your Certificate of Completion](./docs/CERTIFICATE.md)** *Available to all participants who pass the quiz.*
+* **[Claim your Certificate of Completion](https://github.comrmasand0/nutanix-ucs-metro-docs/blob/main/docs/CERTIFICATE.md)** *Available to all participants who pass the quiz.*
 
 ---
 *Created for Rack2Cloud Architecture — Delivering Zero-Downtime Resiliency.*
