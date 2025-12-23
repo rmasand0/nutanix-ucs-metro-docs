@@ -20,4 +20,3 @@ A primary focus of this guide is the integration of Nutanix software with Cisco 
 * **ISM (Intersight Standalone Mode)**: Direct management of standalone servers through Intersight without Fabric Interconnects.
 * **UCSM (Fabric Interconnect Managed Mode)**: The classic management approach using Cisco UCS Manager.
 
-[Image of Nutanix Metro Availability high-level architecture across two sites]
