@@ -1,24 +1,27 @@
 # Module 4: Cisco Intersight Standalone Mode (ISM) for Nutanix
 
-Cisco Intersight Standalone Mode (ISM) allows for management and automation of Nutanix nodes without the requirement of physical Fabric Interconnects.
+## 4.1 Introduction to Standalone Management
+Cisco Intersight Standalone Mode (ISM) allows for the centralized management of Nutanix nodes without the requirement for physical Fabric Interconnects. This architecture is ideal for smaller footprints or edge deployments where policy-driven consistency is still required for standalone C-Series servers.
 
-## 1. Hardware & Cabling Requirements
-For ISM deployments, Nutanix supports specific cabling topologies for C-Series standalone servers:
-* **Adapter Configuration**: Supports 2-port and 4-port NIC/VIC configurations (e.g., VIC 1542x).
-* **Redundancy**: Dual-adapter setups are recommended to provide hardware-level path redundancy.
+## 4.2 Hardware and Cabling Requirements
+To ensure the stability and performance required for Metro Availability, standalone nodes must adhere to specific cabling and adapter standards:
+* **Connectivity**: Servers connect directly to upstream Top-of-Rack (ToR) switches using 10GbE, 25GbE, or 100GbE ports.
+* **VIC Support**: Deployment is supported on Cisco VIC 14000 and 15000 series adapters.
+* **High Availability**: For mission-critical Metro workloads, dual-adapter configurations are utilized to eliminate single points of failure at the card level.
 
-## 2. CIMC & Host Preparation
-Before onboarding servers into Intersight, the Cisco Integrated Management Controller (CIMC) must be prepared:
-* **IP Connectivity**: Configure static IPs or DHCP for CIMC management access.
-* **Core Services**: Stable integration requires accurate DNS and NTP configurations to maintain time-sync for API operations.
 
-## 3. Intersight Onboarding Workflow
-1. **Target Claiming**: Use the Intersight dashboard to claim standalone servers into your organization.
-2. **API Keys**: Generate v3 API keys within Intersight. These are essential for allowing **Nutanix Foundation Central** to orchestrate the hardware.
-3. **Software Access**: Enable software download access within Intersight to facilitate firmware updates via LCM.
 
-## 4. Prism & Foundation Central Setup
-Foundation Central provides the "Zero-Touch" deployment layer for ISM clusters.
-* **Deployment**: Deploy Prism Central (PC) version 2023.3 or higher.
-* **API Integration**: Link PC to Intersight using the generated API keys to discover unconfigured "bare-metal" nodes.
-* **Network Automation**: Ensure the deployment network supports the automated imaging requirements (DHCP Option 200/201 for FC IP and API keys).
+## 4.3 CIMC and Host Preparation
+The Cisco Integrated Management Controller (CIMC) serves as the local management interface that connects the server to the Intersight cloud.
+* **Initial Setup**: Configure CIMC with a static IP or DHCP to allow for the initial claiming process.
+* **Core Services**: Accurate DNS and NTP settings are mandatory to ensure certificate validation and time-stamping for replication logs remain synchronized.
+* **Intersight Claiming**: Servers are "claimed" into the Intersight dashboard using their unique Device ID and Claim Code.
+* **API Integration**: v3 API keys are generated within Intersight to allow the Nutanix Foundation process to communicate with the hardware for automated imaging.
+
+## 4.4 Management Comparison
+During the workshop, we compare ISM to IMM to help engineers choose the right path:
+| Feature | Intersight Standalone (ISM) | Intersight Managed (IMM) |
+| :--- | :--- | :--- |
+| **Fabric Interconnects** | Not Required | Required |
+| **Policy Scope** | Individual Server | Global Domain |
+| **Scale** | Edge / Small / Medium | Large / Enterprise |
