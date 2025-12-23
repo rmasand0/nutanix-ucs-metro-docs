@@ -22,10 +22,6 @@ Click a module below to begin the detailed technical training:
 | **07** | [Deployment](./docs/modules/07-deployment.md) | Witness VM registration, Protection Domain creation, and site-to-site cluster pairing. |
 | **08** | [Operations](./docs/modules/08-operations.md) | Planned/Unplanned failover testing, LCM firmware upgrades, and ESXi HA/DRS behaviors. |
 
-## 📖 Reference Materials
-* **[Take the Interactive Certification Quiz](https://forms.cloud.microsoft/r/Apk0qsihGe)** | 10 Questions | Estimated Time: 10 min
-* **[Claim your Certificate of Completion](docs/CERTIFICATE.md)** | Available to all participants who pass the quiz.
-
 ## ⚡ Technical Guardrails
 * **Latency:** Synchronous replication requires a strict Round Trip Time (RTT) of **≤ 5ms** to maintain application performance.
 * **Witness:** A Witness VM must be deployed at a 3rd site to provide quorum, split-brain protection, and site arbitration.
