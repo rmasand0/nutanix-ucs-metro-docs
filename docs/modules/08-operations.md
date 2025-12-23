@@ -54,3 +54,4 @@ When the "Metro Status" is not Green, use these CLI-based troubleshooting steps:
 Check the detailed replication stats between the UCS domains:
 ```bash
 ncli pd list-repl-stats name=METRO_PD_NAME
+```
