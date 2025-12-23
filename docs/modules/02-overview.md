@@ -3,9 +3,9 @@
 ## 2.1 Synchronous Replication Fundamentals
 The defining characteristic of Metro Availability is its use of synchronous replication. 
 
-* Zero RPO: Every write operation is committed to both the local and remote clusters before being acknowledged to the application.
-* Replication Differences: Unlike Asynchronous replication or NearSync, Metro provides real-time data mirroring.
-* Consistency Groups: These ensure that related VMs, such as a database and its app server, are protected together to maintain write-order fidelity across sites.
+* **Zero RPO**: Every write operation is committed to both the local and remote clusters before being acknowledged to the application.
+* **Replication Differences**: Unlike Asynchronous replication or NearSync, Metro provides real-time data mirroring.
+* **Consistency Groups**: These ensure that related VMs, such as a database and its app server, are protected together to maintain write-order fidelity across sites.
 
 ## 2.2 The Role of the Witness
 The Witness VM is a critical third-party component required for automated site failover and split-brain protection.
@@ -21,3 +21,9 @@ graph TD
     B -- No --> E[Site B Remains Standby]
     E --> F[Manual Intervention Required]
 
+    style A fill:#2c3e50,stroke:#1a252f,color:#fff
+    style B fill:#34495e,stroke:#2c3e50,color:#fff
+    style C fill:#2c3e50,stroke:#1a252f,color:#fff
+    style D fill:#27ae60,stroke:#1e8449,color:#fff
+    style E fill:#2980b9,stroke:#2471a3,color:#fff
+    style F fill:#c0392b,stroke:#922b21,color:#fff
