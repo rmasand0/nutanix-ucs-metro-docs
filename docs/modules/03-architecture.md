@@ -1,26 +1,20 @@
 # Module 3: Metro Architecture Deep Dive
 
-Understanding the underlying communication patterns and data flow is essential for maintaining a resilient multi-site cluster.
+## 3.1 I/O Replication Flow
+[cite_start]This section analyzes the path of a data packet in a Metro environment to ensure zero data loss[cite: 22].
+1. [cite_start]**Request**: The Guest VM issues a write request to the local Controller VM (CVM)[cite: 22].
+2. [cite_start]**Replication**: The local CVM sends a copy of the write to the CVM on the remote cluster[cite: 22].
+3. [cite_start]**Commitment**: Both the local and remote CVMs write the data to their respective persistent storage logs[cite: 22, 23].
+4. [cite_start]**Acknowledgment**: Once both sites have committed the data, the local CVM sends a final acknowledgment back to the Guest VM[cite: 22].
 
-## 1. Synchronous I/O Replication Flow
-Metro Availability utilizes a "Strict Sync" write acknowledgment to ensure data parity across sites.
+## 3.2 Failure Domain Analysis
+[cite_start]Designing for resiliency requires understanding how the cluster responds to different failure types[cite: 24]:
+* [cite_start]**Host Failure**: If a physical Cisco UCS node fails, VMs are restarted on remaining local hosts via hypervisor High Availability (HA)[cite: 25].
+* [cite_start]**Block Failure**: Failure of an entire physical block is mitigated by Nutanix data redundancy (RF2/RF3)[cite: 26].
+* [cite_start]**Cluster/Site Failure**: If an entire site goes offline, the Witness promotes the surviving site to "Active" status, allowing services to resume[cite: 27, 28].
 
-* **The Write Process**: When a VM issues a write, it is written to the local Controller VM (CVM) OpLog and simultaneously replicated to the remote site CVM OpLog.
-* **Acknowledgment**: The VM only receives a write acknowledgment once the data is persistent on both the active and standby clusters.
-* **Read Behavior**: Under normal conditions, reads are served locally from the active site to ensure the lowest possible latency.
-
-[Image of Nutanix Metro Availability synchronous write I/O path]
-
-## 2. Failure Domains and Resiliency
-The architecture is categorized into distinct failure domains to automate responses to various outage scenarios:
-
-| Failure Type | Description | Response Mechanism |
-| :--- | :--- | :--- |
-| **Host Failure** | Individual UCS Blade failure. | Hypervisor HA restarts VMs on remaining local nodes. |
-| **Block Failure** | Loss of an entire physical chassis. | Data redundancy (RF2/RF3) ensures continued availability. |
-| **Cluster/Site Failure** | Total loss of a site or management domain. | The Witness VM promotes the secondary cluster to "Active" status. |
-
-## 3. Latency & Bandwidth Guardrails
-The inter-site network is the most critical factor for storage performance.
-* **Latency Requirement**: Round Trip Time (RTT) must be **$\le$ 5ms**. Spikes above this threshold will directly increase application write latency.
-* **Bandwidth Sizing**: Bandwidth must accommodate peak write throughput plus replication overhead and burst handling.
+## 3.3 Network and Latency Prerequisites
+Architecture stability is highly dependent on network performance:
+* [cite_start]**Latency Bound**: The Round Trip Time (RTT) between sites must remain **≤ 5ms**[cite: 29].
+* [cite_start]**Bandwidth Sizing**: Bandwidth must be sized to handle peak write throughput plus replication overhead[cite: 30].
+* [cite_start]**Burst Handling**: The network must be capable of handling sudden bursts in traffic without dropping replication packets[cite: 30].
