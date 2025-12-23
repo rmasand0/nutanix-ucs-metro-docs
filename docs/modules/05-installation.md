@@ -1,24 +1,28 @@
 # Module 5: Nutanix AOS Installation on Cisco UCS
 
-[cite_start]This module covers the imaging and cluster creation process across the three supported Cisco management modes[cite: 50].
+This module details the imaging and cluster creation workflows required to prepare Cisco UCS hardware for a Nutanix Metro environment.
 
-## IMM (Intersight Managed Mode)
-[cite_start]IMM uses a policy-driven approach to hardware deployment[cite: 51].
-* [cite_start]**Domain Profiles**: Utilize domain profiles and policy-driven templates to ensure hardware consistency[cite: 52].
-* [cite_start]**Network Policies**: Define VLANs and pool definitions (MAC/IP/UUID) within Intersight before deployment[cite: 53].
-* [cite_start]**Foundation Central**: Leverage the Foundation Central workflow to automate the imaging of the clusters once hardware is prepared[cite: 54].
+## 5.1 IMM (Intersight Managed Mode) Workflow
+IMM leverages a modern, cloud-native management approach using Unified Policies to define server identity and network connectivity.
+* **Domain Profiles**: Fabric Interconnects are managed via Domain Profiles to ensure site-to-site configuration consistency.
+* **Policy Templates**: Engineers must define VLANs, MAC pools, and IP pools globally before applying them to specific server slots.
+* **Foundation Central**: This cloud-based portal orchestrates the imaging of both the hypervisor and AOS software over the network.
 
 
 
-## ISM (Standalone Mode)
-[cite_start]For environments without Fabric Interconnects, the standalone workflow is used[cite: 55, 56].
-* [cite_start]**Node Onboarding**: Manage node inventory directly within the Intersight dashboard[cite: 57].
-* [cite_start]**Automated Imaging**: Use the cluster creation wizard to handle automated imaging of the nodes[cite: 58].
-* [cite_start]**VLAN Configuration**: Pay close attention to VLAN trunk/access settings on the upstream switches[cite: 59].
-* [cite_start]**LACP Note**: Do not enable LACP until the imaging process is fully complete[cite: 60, 68].
+## 5.2 ISM (Standalone Mode) Workflow
+The standalone workflow is designed for C-Series servers operating without Fabric Interconnects.
+* **Node Onboarding**: Individual nodes are claimed into the Intersight inventory via their Device ID and Claim Code.
+* **Cluster Wizard**: The automated wizard handles the deployment of the Nutanix software across all nodes in the inventory group.
+* **VLAN Trunking**: Upstream switchports must be configured as trunks to carry traffic for the CVM, Hypervisor, and User VMs.
 
-## UCSM (Classic Managed Mode)
-[cite_start]Traditional Fabric Interconnect management follows a structured "Classic" workflow[cite: 61].
-* [cite_start]**Fabric Interconnects**: Ensure a redundant cluster setup during the initial bring-up[cite: 62].
-* [cite_start]**Service Profiles**: Create MAC/UUID pools and Service Profiles to abstract hardware from the software layer[cite: 63].
-* [cite_start]**Foundation VM**: Use the Foundation VM workflow to image the Nutanix nodes in a UCSM-managed environment[cite: 64].
+## 5.3 UCSM (Classic Managed Mode) Workflow
+For customers utilizing traditional 6400/6500 Fabric Interconnects:
+* **FI Initialization**: Ensure the Fabric Interconnect cluster is healthy and the L1/L2 links are synchronized.
+* **Service Profiles**: Instantiate Service Profiles from a Nutanix-optimized template to ensure critical BIOS settings, such as C-States, are disabled.
+* **Foundation VM**: Use a standalone Foundation VM to orchestrate the imaging process locally if cloud-based tools are not utilized.
+
+## 5.4 Installation Best Practices
+To ensure a successful deployment, adhere to these critical guardrails:
+* **LACP Timing**: Do not enable LACP on the Cisco side until the Nutanix imaging and initial cluster creation are complete.
+* **Network Verification**: Confirm that the native VLAN is correctly mapped to the CVM and Host network to prevent communication loss during imaging.
