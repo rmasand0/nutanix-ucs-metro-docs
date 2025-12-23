@@ -31,4 +31,15 @@ Metro Availability is configured at the **Storage Container** level.
 * **Standby Container**: Receives synchronous replication (Read-Only to the hypervisor).
 * **Witness VM**: Acts as a tie-breaker, monitoring the health of the connection between Site A and Site B.
 
+## 3.5 Logical Architecture Diagram
+Below is the logical flow of the Nutanix CVMs communicating over the Cisco Nexus backbone:
+
+---
+
+## 3.6 Verification: Checking Metro Health
+Once configured, you can verify the status via the Nutanix CLI (nCLI):
+
+```bash
+ncli pd list-metro-avail-status
+
 ---
