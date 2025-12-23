@@ -41,5 +41,5 @@ Once configured, you can verify the status via the Nutanix CLI (nCLI):
 
 ```bash
 ncli pd list-metro-avail-status
-
+```
 ---
