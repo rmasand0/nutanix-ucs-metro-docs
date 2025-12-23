@@ -23,6 +23,7 @@ Click a module below to begin the detailed technical training:
 | **08** | [Operations](./docs/modules/08-operations.md) | Planned/Unplanned failover testing, LCM firmware upgrades, and ESXi HA/DRS behaviors. |
 
 ## 📖 Reference Materials
+* **[Workshop Agenda](./docs/AGENDA.md)**: The full schedule for the 2-day technical deep dive.
 * **[Glossary of Terms](./docs/GLOSSARY.md)**: Definitions for key acronyms and technical terminology used in this guide.
 
 ## ⚡ Technical Guardrails
