@@ -20,3 +20,4 @@ graph TD
     C --> D[Site B Promoted to Active]
     B -- No --> E[Site B Remains Standby]
     E --> F[Manual Intervention Required]
+
