@@ -1,19 +1,26 @@
-# Module 6: Metro-Ready Network & Site Design
+# Module 6: Metro-Ready Network Design
 
-[cite_start]A Metro-ready network requires specific configurations to handle the high-throughput, low-latency demands of synchronous replication[cite: 65].
+A stable, high-performance network is the foundation of Nutanix Metro Availability. This module covers the critical configurations required on Cisco UCS and upstream switches to support synchronous replication.
 
-## Core Configuration Requirements
-* [cite_start]**Trunking**: Ensure all required VLANs are trunked correctly to the hosts[cite: 66].
-* [cite_start]**Native VLAN**: Confirm native VLAN settings match on both ends of the trunk to prevent communication drops[cite: 66].
-* [cite_start]**MTU**: Set MTU to 9000 (Jumbo Frames) across the entire path for maximum replication efficiency[cite: 67].
-* [cite_start]**vPC Design**: Utilize Virtual Port Channels (vPC) for dual-switch redundancy to eliminate single points of failure[cite: 69].
+## 6.1 Inter-Site Connectivity Requirements
+Metro Availability requires a reliable Inter-Site Link (ISL) to handle the real-time mirroring of data.
+* **Latency Threshold**: The Round Trip Time (RTT) between sites must not exceed 5ms.
+* **Bandwidth Sizing**: The link must be sized to handle 1.2x the peak write workload of the applications to account for metadata overhead.
+* **Layer 2 Extension**: Metro requires stretched Layer 2 networks for the CVM, Hypervisor, and protected VM traffic.
+
+## 6.2 MTU and Jumbo Frames
+Proper Maximum Transmission Unit (MTU) settings are vital for replication efficiency and reducing CPU overhead on the CVMs.
+* **End-to-End Consistency**: An MTU of 9000 (Jumbo Frames) must be configured on all virtual and physical interfaces in the replication path.
+* **Fragmentation Risks**: Inconsistent MTU settings lead to packet fragmentation, which significantly increases latency and can cause replication timeouts.
 
 
 
-## Inter-Site Architecture
-[cite_start]The inter-site network must support both the Metro data traffic and the Witness communication[cite: 70].
-* [cite_start]**Stretched Layer 2**: Required for VM networking to allow for seamless vMotion/HA without IP changes[cite: 1, 9].
-* [cite_start]**Witness Connectivity**: Ensure Site A, Site B, and the Witness site all have reliable L3 connectivity[cite: 70, 74].
+## 6.3 Cisco UCS Networking & vPC Design
+For deployments using Fabric Interconnects, the following Cisco best practices apply:
+* **Virtual Port Channels (vPC)**: Use vPC on the upstream Cisco Nexus switches to provide redundant, high-bandwidth paths to the Fabric Interconnects.
+* **VLAN Trunking**: Configure all server-facing ports as 802.1Q trunks to allow multiple traffic types (Management, Storage, and VM) to flow over the same physical links.
+* **LACP Policy**: While LACP is recommended for production, it should be disabled during the initial Nutanix Foundation imaging process and enabled only after the cluster is formed.
 
-## Initial Setup Precautions
-* [cite_start]**LACP**: Avoid enabling LACP on the host side until the initial Nutanix imaging is finished[cite: 68].
+## 6.4 Traffic Isolation and QoS
+* **Separating Replication**: Whenever possible, isolate synchronous replication traffic to dedicated physical or virtual links to prevent congestion from general VM traffic.
+* **Quality of Service (QoS)**: Implement "Silver" or "Platinum" UCS QoS classes to prioritize storage traffic over the Fabric Interconnects.
